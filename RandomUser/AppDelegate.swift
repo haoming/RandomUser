@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RandomUser
 //
-//  Created by etarip on 12/11/19.
+//  Created by Haoming Ma on 12/11/19.
 //  Copyright © 2019 Haoming. All rights reserved.
 //
 
@@ -11,8 +11,6 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -59,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        print("persistentContainer loaded")
         return container
     }()
 

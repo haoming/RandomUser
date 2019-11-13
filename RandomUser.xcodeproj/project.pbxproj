@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		701251E1237BAFE200B87280 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701251E0237BAFE200B87280 /* User.swift */; };
+		701251E3237BB9EA00B87280 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701251E2237BB9EA00B87280 /* UserView.swift */; };
 		70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F1237AA4B900CC6493 /* AppDelegate.swift */; };
 		70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */; };
 		70CD88F7237AA4B900CC6493 /* RandomUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		701251E0237BAFE200B87280 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		701251E2237BB9EA00B87280 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		70CD88EE237AA4B900CC6493 /* RandomUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD88F1237AA4B900CC6493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				70CD8902237AA4BC00CC6493 /* Info.plist */,
 				70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */,
 				70CD88FC237AA4BC00CC6493 /* Preview Content */,
+				701251E0237BAFE200B87280 /* User.swift */,
+				701251E2237BB9EA00B87280 /* UserView.swift */,
 			);
 			path = RandomUser;
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CD88F7237AA4B900CC6493 /* RandomUser.xcdatamodeld in Sources */,
+				701251E3237BB9EA00B87280 /* UserView.swift in Sources */,
 				70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */,
 				70CD88F9237AA4B900CC6493 /* ContentView.swift in Sources */,
+				701251E1237BAFE200B87280 /* User.swift in Sources */,
 				70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
