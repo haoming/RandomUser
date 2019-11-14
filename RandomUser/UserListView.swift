@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  UserListView.swift
 //  RandomUser
 //
 //  Created by Haoming Ma on 12/11/19.
@@ -7,13 +7,19 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct ContentView: View {
+struct UserListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: User.getAllUsers()) var allUsers: FetchedResults<User>
     
-    @State private var isLoading: Bool = false
+    @FetchRequest(fetchRequest: UserEntity.getAllUsers()) var allUsers: FetchedResults<UserEntity>
+    
+    @ObservedObject var viewModel: UserListViewModel
+    
+    init(viewModel: UserListViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         
@@ -40,9 +46,9 @@ struct ContentView: View {
     }
     
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

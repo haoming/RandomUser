@@ -12,7 +12,7 @@ struct UserView: View {
     var name: String
     var email: String
     
-    init(user: User) {
+    init(user: UserEntity) {
         self.name = user.firstName + " " + user.lastName
         self.email = user.email ?? ""
     }
