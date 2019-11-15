@@ -15,15 +15,13 @@ enum RandomUserError: Error {
 }
 
 func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, RandomUserError> {
-    let decoder = JSONDecoder()
-//    decoder.dateDecodingStrategy = .iso8601
     
     if let str = String(data: data, encoding: .utf8) {
         print(str)
     }
     
     return Just(data)
-      .decode(type: T.self, decoder: decoder)
+      .decode(type: T.self, decoder: JSONDecoder())
       .mapError { error in
         print("print error:")
         print(error)

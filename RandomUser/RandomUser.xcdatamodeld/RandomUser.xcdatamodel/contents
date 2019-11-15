@@ -7,8 +7,8 @@
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="index" attributeType="Integer 64" usesScalarValueType="YES"/>
-        <attribute name="isMale" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="largePictureUrl" optional="YES" attributeType="String"/>
         <attribute name="lastName" attributeType="String" defaultValueString=""/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -27,6 +27,6 @@
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="UserEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="UserEntity" positionX="0" positionY="0" width="128" height="403"/>
     </elements>
 </model>

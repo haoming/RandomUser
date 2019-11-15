@@ -20,7 +20,7 @@ class UserEntity : NSManagedObject, Identifiable {
     @NSManaged var cellPhone: String?
     @NSManaged var registeredTime: Date?
 
-    @NSManaged var isMale: Bool
+    @NSManaged var gender: String?
     @NSManaged var dateOfBirth: Date?
     @NSManaged var nationality: String?
 
@@ -45,11 +45,11 @@ class UserEntity : NSManagedObject, Identifiable {
         entity.cellPhone = user.cell
         entity.city = user.location?.city
         entity.country = user.location?.country
-        entity.dateOfBirth = user.dob?.dateTime
+        entity.dateOfBirth = user.dateOfBirth
         entity.email = user.email
         entity.firstName = user.name?.first ?? ""
+        entity.gender = user.gender
         entity.index = index
-        entity.isMale = user.isMale
         entity.largePictureUrl = user.picture?.large
         entity.lastName = user.name?.last ?? ""
         
@@ -62,7 +62,10 @@ class UserEntity : NSManagedObject, Identifiable {
             entity.longitude = NSNumber(value: lonFloat)
         }
         
-        entity.registeredTime = user.registered?.dateTime
+        entity.nationality = user.nat
+        entity.mediumPictureUrl = user.picture?.medium
+        entity.phone = user.phone
+        entity.registeredTime = user.registeredTime
         entity.seed = apiInfo.seed
         entity.state = user.location?.state
         entity.streetName = user.location?.street?.name
@@ -93,6 +96,12 @@ extension UserEntity {
         
         request.sortDescriptors = [indexSort]
         return request
+    }
+    
+    var fullName: String {
+        get {
+            return "\(self.firstName) \(self.lastName)".trimmingCharacters(in: .whitespacesAndNewlines)
+        }
     }
     
     var avatarUrl: URL? {

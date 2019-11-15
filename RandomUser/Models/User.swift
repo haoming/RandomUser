@@ -17,27 +17,31 @@ struct User: Codable {
     let location: Location?
     let email: String?
     let login: Login?
-    let dob, registered: Dob?
+    let dob, registered: DateTime?
     let phone, cell: String?
     let id: ID?
     let picture: Picture?
     let nat: String?
-    
-    var isMale: Bool {
+}
+
+extension User {
+    var dateOfBirth: Date? {
         get {
-            if let gender = gender, gender == "male" {
-                return true
-            } else {
-                return false
-            }
+            return DateUtils.parse(self.dob?.date)
+        }
+    }
+    
+    var registeredTime: Date? {
+        get {
+            return DateUtils.parse(self.registered?.date)
         }
     }
 }
 
-// MARK: - Dob
-struct Dob: Codable {
-    let dateTime: Date?
-    let age: Int?
+// MARK: - DateTime
+struct DateTime: Codable {
+    // use String instead of Date to make the JSON parsing more robust to allow ill-formed date time strings
+    let date: String?
 }
 
 // MARK: - ID

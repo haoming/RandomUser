@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		705EB9BC237CC196000A6FD9 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BB237CC196000A6FD9 /* UserEntity.swift */; };
 		705EB9BE237CC1AB000A6FD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BD237CC1AB000A6FD9 /* User.swift */; };
 		705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */; };
+		708717B0237F58A60092FA08 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717AF237F58A60092FA08 /* DateUtils.swift */; };
+		708717B2237F64530092FA08 /* NationalityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717B1237F64530092FA08 /* NationalityUtils.swift */; };
 		70BC8C66237CDAD700D599D4 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC8C65237CDAD700D599D4 /* UserListViewModel.swift */; };
 		70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F1237AA4B900CC6493 /* AppDelegate.swift */; };
 		70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 		705EB9BB237CC196000A6FD9 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		705EB9BD237CC1AB000A6FD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserApiResponse.swift; sourceTree = "<group>"; };
+		708717AF237F58A60092FA08 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		708717B1237F64530092FA08 /* NationalityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityUtils.swift; sourceTree = "<group>"; };
 		70BC8C65237CDAD700D599D4 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		70CD88EE237AA4B900CC6493 /* RandomUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD88F1237AA4B900CC6493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +105,6 @@
 				7E3ACA539CEE3AB7AC9449D6 /* Pods-RandomUser.debug.xcconfig */,
 				CA5CDF9675CCA3E40E3C38C0 /* Pods-RandomUser.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -121,6 +124,15 @@
 				705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		708717AE237F588D0092FA08 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				708717AF237F58A60092FA08 /* DateUtils.swift */,
+				708717B1237F64530092FA08 /* NationalityUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		70BC8C64237CDAA700D599D4 /* ViewModels */ = {
@@ -156,6 +168,7 @@
 		70CD88F0237AA4B900CC6493 /* RandomUser */ = {
 			isa = PBXGroup;
 			children = (
+				708717AE237F588D0092FA08 /* Utils */,
 				70BC8C64237CDAA700D599D4 /* ViewModels */,
 				705EB9BA237CC120000A6FD9 /* Models */,
 				705EB9B6237CBFA9000A6FD9 /* Services */,
@@ -386,6 +399,8 @@
 				705EB9B8237CC01E000A6FD9 /* UserFetcher.swift in Sources */,
 				70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */,
 				70BC8C66237CDAD700D599D4 /* UserListViewModel.swift in Sources */,
+				708717B0237F58A60092FA08 /* DateUtils.swift in Sources */,
+				708717B2237F64530092FA08 /* NationalityUtils.swift in Sources */,
 				705EB9BE237CC1AB000A6FD9 /* User.swift in Sources */,
 				705EB9BC237CC196000A6FD9 /* UserEntity.swift in Sources */,
 				705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */,
