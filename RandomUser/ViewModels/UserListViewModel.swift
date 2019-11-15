@@ -1,5 +1,5 @@
 //
-//  RandomUserViewModel.swift
+//  UserListViewModel.swift
 //  RandomUser
 //
 //  Created by Haoming Ma on 14/11/19.

@@ -94,4 +94,21 @@ extension UserEntity {
         request.sortDescriptors = [indexSort]
         return request
     }
+    
+    var avatarUrl: URL? {
+        get {
+            // the resolution of thumbnail is not good enough to use as avatars
+//            if let thumbnail = self.thumbnailUrl, let thumbnailURL = URL(string: thumbnail) {
+//                return thumbnailURL
+//            } else
+                
+            if let mediumPic = self.mediumPictureUrl, let mediumPicURL = URL(string: mediumPic) {
+                return mediumPicURL
+            } else if let largePic = self.largePictureUrl, let largePicURL = URL(string: largePic) {
+                return largePicURL
+            } else {
+                return nil
+            }
+        }
+    }
 }
