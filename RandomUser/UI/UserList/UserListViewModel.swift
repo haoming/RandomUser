@@ -52,15 +52,8 @@ class UserListViewModel: ObservableObject {
     private func clearUserEntityData() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntity.coreDataEntityName)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//        batchDeleteRequest.resultType = .resultTypeObjectIDs
         do {
-            let deleteResult = try managedObjectContext.execute(batchDeleteRequest) as? NSBatchDeleteResult
-            
-//            let objectIDArray = deleteResult?.result as? [NSManagedObjectID]
-//            let changes = [NSDeletedObjectsKey : objectIDArray]
-//            // merge the deletion into the current managedObjectContext
-//            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes as [AnyHashable : Any], into: [managedObjectContext])
-                        
+            try managedObjectContext.execute(batchDeleteRequest)
             self.managedObjectContext.reset()
             print("Existing data cleared")
         } catch {

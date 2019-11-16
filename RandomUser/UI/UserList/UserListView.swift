@@ -20,32 +20,47 @@ struct UserListView: View {
     }
     
     var body: some View {
-        
         NavigationView {
-            self.contentOrEmptyView
+            VStack(alignment: .leading) {
+                if self.viewModel.fetchedUsers.isEmpty {
+                    if self.viewModel.isLoading {
+                        Text("Loading ...")
+                    } else {
+                        Text("No user found.")
+                    }
+                } else {
+                    self.listView
+                }
+            }
             .navigationBarTitle("Random Users")
         }
     }
     
-    private var contentOrEmptyView: some View {
-        VStack(alignment: .leading) {
-            if self.viewModel.fetchedUsers.isEmpty {
-                Text("No user found")
-            } else {
-                List {
-                    ForEach(self.viewModel.fetchedUsers) { user in
-                        NavigationLink(destination: UserDetailsView(user: user)) {
-                            VStack(alignment: .leading) {
-                                UserView(user: user)
-                            }
-                        }
-                    }
+    var listView: some View {
+        List(self.viewModel.fetchedUsers) { user in
+            VStack(alignment: .center) {
+                NavigationLink(destination: UserDetailsView(user: user)) {
+                    UserView(user: user)
                 }
+                
+                if self.viewModel.isLoading && self.viewModel.fetchedUsers.isLastItem(user) {
+                    Divider()
+                    Text("Loading ...")
+                }
+            }.onAppear {
+                self.listItemAppears(user)
             }
         }
     }
     
+    private func listItemAppears(_ item: UserEntity) {
+        if self.viewModel.fetchedUsers.isThresholdItem(offset: 5,
+                                 item: item) {
+            self.viewModel.fetchAndStore()
+        }
+    }
 }
+
 //
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
