@@ -16,7 +16,7 @@ struct ApiInfo: Codable {
 }
 
 struct RandomUserApiResponse: Codable {
-    let results: [User]?
+    let results: [DecodedUser]?
     let info: ApiInfo?
     let error: String?
 }

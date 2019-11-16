@@ -10,9 +10,9 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct UserDetailsView: View {
-    var user: UserEntity
+    var user: User
     
-    init(user: UserEntity) {
+    init(user: User) {
         self.user = user
     }
     
@@ -42,7 +42,7 @@ struct UserDetailsView: View {
                     UserInfoItemView(label: "Last name", value: user.lastName)
                     Divider()
                     UserInfoItemView(label: "Email", value: user.email)
-                    MapView(lat: user.latitude!.doubleValue, lon: user.longitude!.doubleValue)
+                    MapView(coordinate: user.coordinate!)
                                    .frame(height: 300)
                                    .disabled(false)
                 }.padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))

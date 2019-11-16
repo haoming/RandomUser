@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		705EB9B8237CC01E000A6FD9 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9B7237CC01E000A6FD9 /* UserFetcher.swift */; };
 		705EB9BC237CC196000A6FD9 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BB237CC196000A6FD9 /* UserEntity.swift */; };
-		705EB9BE237CC1AB000A6FD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BD237CC1AB000A6FD9 /* User.swift */; };
+		705EB9BE237CC1AB000A6FD9 /* DecodedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BD237CC1AB000A6FD9 /* DecodedUser.swift */; };
 		705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */; };
 		708717B0237F58A60092FA08 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717AF237F58A60092FA08 /* DateUtils.swift */; };
 		708717B2237F64530092FA08 /* NationalityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717B1237F64530092FA08 /* NationalityUtils.swift */; };
@@ -19,6 +19,7 @@
 		708717CE237FA1870092FA08 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717CD237FA1870092FA08 /* UserDetailsView.swift */; };
 		708717D0237FA40E0092FA08 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717CF237FA40E0092FA08 /* MapView.swift */; };
 		708717D2237FC74D0092FA08 /* UserInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717D1237FC74D0092FA08 /* UserInfoItemView.swift */; };
+		708717D4237FD3680092FA08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717D3237FD3680092FA08 /* User.swift */; };
 		70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F1237AA4B900CC6493 /* AppDelegate.swift */; };
 		70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */; };
 		70CD88F7237AA4B900CC6493 /* RandomUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */; };
@@ -53,7 +54,7 @@
 /* Begin PBXFileReference section */
 		705EB9B7237CC01E000A6FD9 /* UserFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
 		705EB9BB237CC196000A6FD9 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
-		705EB9BD237CC1AB000A6FD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		705EB9BD237CC1AB000A6FD9 /* DecodedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedUser.swift; sourceTree = "<group>"; };
 		705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserApiResponse.swift; sourceTree = "<group>"; };
 		708717AF237F58A60092FA08 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		708717B1237F64530092FA08 /* NationalityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityUtils.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		708717CD237FA1870092FA08 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		708717CF237FA40E0092FA08 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		708717D1237FC74D0092FA08 /* UserInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoItemView.swift; sourceTree = "<group>"; };
+		708717D3237FD3680092FA08 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		70CD88EE237AA4B900CC6493 /* RandomUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD88F1237AA4B900CC6493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,8 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				705EB9BB237CC196000A6FD9 /* UserEntity.swift */,
-				705EB9BD237CC1AB000A6FD9 /* User.swift */,
+				705EB9BD237CC1AB000A6FD9 /* DecodedUser.swift */,
 				705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */,
+				708717D3237FD3680092FA08 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,8 +440,9 @@
 				705EB9B8237CC01E000A6FD9 /* UserFetcher.swift in Sources */,
 				70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */,
 				708717B0237F58A60092FA08 /* DateUtils.swift in Sources */,
+				708717D4237FD3680092FA08 /* User.swift in Sources */,
 				708717B2237F64530092FA08 /* NationalityUtils.swift in Sources */,
-				705EB9BE237CC1AB000A6FD9 /* User.swift in Sources */,
+				705EB9BE237CC1AB000A6FD9 /* DecodedUser.swift in Sources */,
 				705EB9BC237CC196000A6FD9 /* UserEntity.swift in Sources */,
 				708717D0237FA40E0092FA08 /* MapView.swift in Sources */,
 				705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */,

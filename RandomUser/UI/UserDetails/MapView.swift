@@ -12,10 +12,8 @@ import MapKit
 struct MapView: UIViewRepresentable {
     private let coordinate: CLLocationCoordinate2D
 
-    init(lat: Double, lon: Double) {
-        
-        print("lat: \(lat), lon: \(lon)")
-        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    init(coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
     }
     
     func makeUIView(context: Context) -> MKMapView {

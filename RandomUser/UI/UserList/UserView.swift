@@ -11,23 +11,15 @@ import struct Kingfisher.KFImage
 
 struct UserView: View {
     
-    var name: String
-    var avatarUrl: URL?
-    var dob: Date?
-    var gender: String?
-    var nat: String?
+    let user: User
     
-    init(user: UserEntity) {
-        self.name = user.fullName
-        self.avatarUrl = user.avatarUrl
-        self.dob = user.dateOfBirth
-        self.gender = user.gender
-        self.nat = user.nationality
+    init(user: User) {
+        self.user =  user
     }
     
     var body: some View {
         HStack{
-            KFImage(self.avatarUrl)
+            KFImage(self.user.avatarUrl)
                 .placeholder{
                     Image(systemName: "person")
                     .font(.largeTitle)
@@ -38,7 +30,7 @@ struct UserView: View {
                 .cornerRadius(20)
                 .shadow(radius: 5)
             VStack(alignment: .leading) {
-                Text(name).font(.headline).padding(.bottom, 4)
+                Text(self.user.fullName).font(.headline).padding(.bottom, 4)
                 Text(self.formattedDob).font(.subheadline)
                 Text(self.formattedGender).font(.subheadline)
                 Text(self.formattedNationality).font(.subheadline)
@@ -50,7 +42,7 @@ struct UserView: View {
 extension UserView {
     var formattedDob: String {
         get {
-            if let dob = self.dob {
+            if let dob = user.dateOfBirth {
                 return "DoB: " + DateUtils.formatDob(dob)
             } else {
                 return "Dob: unknown"
@@ -60,7 +52,7 @@ extension UserView {
     
     var formattedGender: String {
         get {
-            guard let gender = self.gender else {
+            guard let gender = user.gender else {
                 return "Gender: unknown"
             }
             
@@ -76,7 +68,7 @@ extension UserView {
     
     var formattedNationality: String {
         get {
-            if let nat = self.nat, let natCode = Iso3166_1a2(rawValue: nat.uppercased()) {
+            if let nat = user.nationality, let natCode = Iso3166_1a2(rawValue: nat.uppercased()) {
                 return "Nationality: \(natCode.flag)"
             } else {
                 return "Nationality: unknown"

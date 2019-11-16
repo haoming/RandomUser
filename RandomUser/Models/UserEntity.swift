@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import CoreLocation
 
 class UserEntity : NSManagedObject, Identifiable {
     @NSManaged var uuid: UUID
@@ -40,7 +41,7 @@ class UserEntity : NSManagedObject, Identifiable {
     @NSManaged var seed: String?
     @NSManaged var index: Int64
     
-    static func newInstance(context: NSManagedObjectContext, user: User, apiInfo: ApiInfo, index: Int64) -> UserEntity {
+    static func newInstance(context: NSManagedObjectContext, user: DecodedUser, apiInfo: ApiInfo, index: Int64) -> UserEntity {
         let entity = UserEntity(context: context)
         entity.cellPhone = user.cell
         entity.city = user.location?.city
@@ -97,41 +98,19 @@ extension UserEntity {
         request.sortDescriptors = [indexSort]
         return request
     }
-    
-    var fullName: String {
-        get {
-            return "\(self.firstName) \(self.lastName)".trimmingCharacters(in: .whitespacesAndNewlines)
-        }
+}
+
+
+extension UserEntity: User {
+    var id: String {
+        self.uuid.uuidString
     }
     
-    var avatarUrl: URL? {
-        get {
-            // the resolution of thumbnail is not good enough to use as avatars
-//            if let thumbnail = self.thumbnailUrl, let thumbnailURL = URL(string: thumbnail) {
-//                return thumbnailURL
-//            } else
-                
-            if let mediumPic = self.mediumPictureUrl, let mediumPicURL = URL(string: mediumPic) {
-                return mediumPicURL
-            } else if let largePic = self.largePictureUrl, let largePicURL = URL(string: largePic) {
-                return largePicURL
-            } else {
-                return nil
-            }
-        }
-    }
-    
-    var largeAvatarUrl: URL? {
-        get {
-            if let largePic = self.largePictureUrl, let largePicURL = URL(string: largePic) {
-                return largePicURL
-            } else if let mediumPic = self.mediumPictureUrl, let mediumPicURL = URL(string: mediumPic) {
-                return mediumPicURL
-            } else if let thumbnail = self.thumbnailUrl, let thumbnailURL = URL(string: thumbnail) {
-                return thumbnailURL
-            } else {
-                return nil
-            }
+    var coordinate: CLLocationCoordinate2D? {
+        if let lat = self.latitude, let lon = self.longitude {
+            return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+        } else {
+            return nil
         }
     }
 }
