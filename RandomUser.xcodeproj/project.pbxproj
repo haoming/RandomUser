@@ -22,6 +22,7 @@
 		708717D4237FD3680092FA08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717D3237FD3680092FA08 /* User.swift */; };
 		708717D6237FF5270092FA08 /* CoreDataUserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717D5237FF5270092FA08 /* CoreDataUserFetcher.swift */; };
 		708717D823800D890092FA08 /* RandomAccessCollection+isThresholdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717D723800D890092FA08 /* RandomAccessCollection+isThresholdItem.swift */; };
+		70A250FD2380B257002D444C /* UserFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A250FC2380B257002D444C /* UserFilterView.swift */; };
 		70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F1237AA4B900CC6493 /* AppDelegate.swift */; };
 		70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */; };
 		70CD88F7237AA4B900CC6493 /* RandomUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 		708717D3237FD3680092FA08 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		708717D5237FF5270092FA08 /* CoreDataUserFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserFetcher.swift; sourceTree = "<group>"; };
 		708717D723800D890092FA08 /* RandomAccessCollection+isThresholdItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+isThresholdItem.swift"; sourceTree = "<group>"; };
+		70A250FC2380B257002D444C /* UserFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFilterView.swift; sourceTree = "<group>"; };
 		70CD88EE237AA4B900CC6493 /* RandomUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD88F1237AA4B900CC6493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				B2E9EED046CD956663E4E518 /* UserListView.swift */,
 				B2E9E933AC901B04BD016A77 /* UserView.swift */,
 				B2E9E0CCF940FA8D9A018ED1 /* UserListViewModel.swift */,
+				70A250FC2380B257002D444C /* UserFilterView.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */,
 				708717D6237FF5270092FA08 /* CoreDataUserFetcher.swift in Sources */,
 				708717CE237FA1870092FA08 /* UserDetailsView.swift in Sources */,
+				70A250FD2380B257002D444C /* UserFilterView.swift in Sources */,
 				708717D2237FC74D0092FA08 /* UserInfoItemView.swift in Sources */,
 				70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */,
 				B2E9EFE8F5AD65A4782A57E4 /* UserListView.swift in Sources */,

@@ -15,6 +15,9 @@ struct UserListView: View {
     
     @ObservedObject var viewModel: UserListViewModel
     
+    @State private var searchQuery: String = ""
+    @State private var selectedGenderOptionIndex: Int = 0
+    
     init(viewModel: UserListViewModel) {
         self.viewModel = viewModel
     }
@@ -35,20 +38,26 @@ struct UserListView: View {
             .navigationBarTitle("Random Users")
         }
     }
+
     
     var listView: some View {
-        List(self.viewModel.fetchedUsers) { user in
-            VStack(alignment: .center) {
-                NavigationLink(destination: UserDetailsView(user: user)) {
-                    UserView(user: user)
+        List {
+            UserFilterView(searchQuery: $searchQuery, selectedGenderOptionIndex: $selectedGenderOptionIndex)
+            Section {
+                ForEach(self.viewModel.fetchedUsers) { user in
+                    VStack(alignment: .center) {
+                        NavigationLink(destination: UserDetailsView(user: user)) {
+                            UserView(user: user)
+                        }
+
+                        if self.viewModel.isLoading && self.viewModel.fetchedUsers.isLastItem(user) {
+                            Divider()
+                            Text("Loading ...")
+                        }
+                    }.onAppear {
+                        self.listItemAppears(user)
+                    }
                 }
-                
-                if self.viewModel.isLoading && self.viewModel.fetchedUsers.isLastItem(user) {
-                    Divider()
-                    Text("Loading ...")
-                }
-            }.onAppear {
-                self.listItemAppears(user)
             }
         }
     }
