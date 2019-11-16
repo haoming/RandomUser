@@ -10,6 +10,8 @@ import CoreData
 import CoreLocation
 
 class UserEntity : NSManagedObject, Identifiable {
+    static let coreDataEntityName = "UserEntity"
+    
     @NSManaged var uuid: UUID
     
     @NSManaged var firstName: String
@@ -87,24 +89,10 @@ class UserEntity : NSManagedObject, Identifiable {
     }
 }
 
-extension UserEntity {
-    static func getAllUsers() -> NSFetchRequest<UserEntity> {
-        
-        print("call getAllUsers")
-        let request = UserEntity.fetchRequest() as! NSFetchRequest<UserEntity>
-        
-        let indexSort = NSSortDescriptor(key: "index", ascending: true)
-        
-        request.sortDescriptors = [indexSort]
-        return request
-    }
-}
-
-
 extension UserEntity: User {
-    var id: String {
-        self.uuid.uuidString
-    }
+//    var id: String {
+//        self.uuid.uuidString
+//    }
     
     var coordinate: CLLocationCoordinate2D? {
         if let lat = self.latitude, let lon = self.longitude {

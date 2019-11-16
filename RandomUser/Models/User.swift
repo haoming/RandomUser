@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 protocol User {
-    var id: String {get}
+    //var id: String {get}
     var firstName: String {get}
     var lastName: String {get}
     var email: String? {get}

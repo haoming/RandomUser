@@ -13,8 +13,6 @@ struct UserListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest(fetchRequest: UserEntity.getAllUsers()) var allUsers: FetchedResults<UserEntity>
-    
     @ObservedObject var viewModel: UserListViewModel
     
     init(viewModel: UserListViewModel) {
@@ -31,11 +29,11 @@ struct UserListView: View {
     
     private var contentOrEmptyView: some View {
         VStack(alignment: .leading) {
-            if self.allUsers.isEmpty {
+            if self.viewModel.fetchedUsers.isEmpty {
                 Text("No user found")
             } else {
                 List {
-                    ForEach(self.allUsers) { user in
+                    ForEach(self.viewModel.fetchedUsers) { user in
                         NavigationLink(destination: UserDetailsView(user: user)) {
                             VStack(alignment: .leading) {
                                 UserView(user: user)

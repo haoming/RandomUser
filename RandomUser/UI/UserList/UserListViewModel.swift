@@ -9,12 +9,22 @@
 import SwiftUI
 import Combine
 import CoreData
+import UIKit
 
 class UserListViewModel: ObservableObject {
+    internal var objectWillChange = PassthroughSubject<Void, Never>()
+    
     @Published var isLoading: Bool
+    
+    @Published var fetchedUsers: [UserEntity] = [] {
+        willSet {
+          objectWillChange.send()
+        }
+    }
 
     private weak var managedObjectContext: NSManagedObjectContext!
     private weak var fetcher: UserFetcher!
+    private var coreDataFetcher: CoreDataUserFetcher!
     
     private var page: Int
     private var countPerPage: Int
@@ -27,16 +37,38 @@ class UserListViewModel: ObservableObject {
         
         self.page = 1
         self.countPerPage = 30
+        
         self.seed = UUID().uuidString
     }
     
     func setUpAndRun(fetcher: UserFetcher, managedObjectContext: NSManagedObjectContext) {
         self.fetcher = fetcher
         self.managedObjectContext = managedObjectContext
-        
+        self.coreDataFetcher = CoreDataUserFetcher(managedObjectContext: managedObjectContext)
+        self.fetchedUsers = self.coreDataFetcher.fetch()
         self.fetchAndStore()
     }
 
+    private func clearUserEntityData() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntity.coreDataEntityName)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//        batchDeleteRequest.resultType = .resultTypeObjectIDs
+        do {
+            let deleteResult = try managedObjectContext.execute(batchDeleteRequest) as? NSBatchDeleteResult
+            
+//            let objectIDArray = deleteResult?.result as? [NSManagedObjectID]
+//            let changes = [NSDeletedObjectsKey : objectIDArray]
+//            // merge the deletion into the current managedObjectContext
+//            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes as [AnyHashable : Any], into: [managedObjectContext])
+                        
+            self.managedObjectContext.reset()
+            print("Existing data cleared")
+        } catch {
+            // unlikely to happen
+            print("Failed to delete existing data for UserEntity")
+        }
+    }
+    
     private func store(response: RandomUserApiResponse, currentPage: Int) {
         guard let users = response.results, let apiInfo = response.info else {
             return
@@ -89,7 +121,13 @@ class UserListViewModel: ObservableObject {
                 if let _ = response.error {
 
                 } else {
+                    if self.page == 1 {
+                        // the first page response for a new seed
+                        // clear the old data for a different seed
+                        self.clearUserEntityData()
+                    }
                     self.store(response: response, currentPage: self.page)
+                    self.fetchedUsers = self.coreDataFetcher.fetch()
                     self.page = self.page + 1
                 }
                 self.isLoading = false
