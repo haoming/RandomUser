@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    var fetcher: RandomUserFetcher!
+    var fetcher: UserFetcher!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         
-        self.fetcher = RandomUserFetcher()
+        self.fetcher = UserFetcher()
         let viewModel = UserListViewModel()
         viewModel.setUpAndRun(fetcher: self.fetcher, managedObjectContext: context)
         

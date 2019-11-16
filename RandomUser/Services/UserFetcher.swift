@@ -9,32 +9,32 @@
 import Foundation
 import Combine
 
-enum RandomUserError: Error {
+enum RandomUserError: Error, Equatable {
   case parsing(description: String)
   case network(description: String)
 }
 
-func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, RandomUserError> {
-    
-    if let str = String(data: data, encoding: .utf8) {
-        print(str)
-    }
-    
-    return Just(data)
-      .decode(type: T.self, decoder: JSONDecoder())
-      .mapError { error in
-        print("print error:")
-        print(error)
-        return .parsing(description: error.localizedDescription)
-      }
-      .eraseToAnyPublisher()
-}
-
-class RandomUserFetcher {
+public class UserFetcher {
     private let urlSession: URLSession
     
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
+    }
+    
+    static func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, RandomUserError> {
+        
+        if let str = String(data: data, encoding: .utf8) {
+            print(str)
+        }
+        
+        return Just(data)
+          .decode(type: T.self, decoder: JSONDecoder())
+          .mapError { error in
+            print("print error:")
+            print(error)
+            return .parsing(description: error.localizedDescription)
+          }
+          .eraseToAnyPublisher()
     }
     
     func getUsers(page: Int, count: Int, seed: String, gender: String? = nil, nationality: String? = nil) -> AnyPublisher<RandomUserApiResponse, RandomUserError> {
@@ -52,14 +52,14 @@ class RandomUserFetcher {
           .network(description: error.localizedDescription)
         }
         .flatMap(maxPublishers: .max(1)) { pair in
-          decode(pair.data)
+            UserFetcher.decode(pair.data)
         }
         .eraseToAnyPublisher()
     }
 }
 
 // MARK: - RandomUser APIs
-private extension RandomUserFetcher {
+private extension UserFetcher {
   struct RandomUserAPI {
     static let scheme = "https"
     static let host = "randomuser.me"

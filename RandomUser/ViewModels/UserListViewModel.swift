@@ -14,7 +14,7 @@ class UserListViewModel: ObservableObject {
     @Published var isLoading: Bool
 
     private weak var managedObjectContext: NSManagedObjectContext!
-    private weak var fetcher: RandomUserFetcher!
+    private weak var fetcher: UserFetcher!
     
     private var page: Int
     private var countPerPage: Int
@@ -30,7 +30,7 @@ class UserListViewModel: ObservableObject {
         self.seed = UUID().uuidString
     }
     
-    func setUpAndRun(fetcher: RandomUserFetcher, managedObjectContext: NSManagedObjectContext) {
+    func setUpAndRun(fetcher: UserFetcher, managedObjectContext: NSManagedObjectContext) {
         self.fetcher = fetcher
         self.managedObjectContext = managedObjectContext
         

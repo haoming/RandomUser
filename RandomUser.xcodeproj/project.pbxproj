@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		705EB9C0237CC42E000A6FD9 /* RandomUserApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */; };
 		708717B0237F58A60092FA08 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717AF237F58A60092FA08 /* DateUtils.swift */; };
 		708717B2237F64530092FA08 /* NationalityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717B1237F64530092FA08 /* NationalityUtils.swift */; };
+		708717B4237F821E0092FA08 /* UserFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708717B3237F821E0092FA08 /* UserFetcherTests.swift */; };
+		708717B7237F88810092FA08 /* EntwineTest in Frameworks */ = {isa = PBXBuildFile; productRef = 708717B6237F88810092FA08 /* EntwineTest */; };
+		708717B9237F88810092FA08 /* Entwine in Frameworks */ = {isa = PBXBuildFile; productRef = 708717B8237F88810092FA08 /* Entwine */; };
 		70BC8C66237CDAD700D599D4 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC8C65237CDAD700D599D4 /* UserListViewModel.swift */; };
 		70CD88F2237AA4B900CC6493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F1237AA4B900CC6493 /* AppDelegate.swift */; };
 		70CD88F4237AA4B900CC6493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */; };
@@ -52,6 +55,7 @@
 		705EB9BF237CC42E000A6FD9 /* RandomUserApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserApiResponse.swift; sourceTree = "<group>"; };
 		708717AF237F58A60092FA08 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		708717B1237F64530092FA08 /* NationalityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityUtils.swift; sourceTree = "<group>"; };
+		708717B3237F821E0092FA08 /* UserFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetcherTests.swift; sourceTree = "<group>"; };
 		70BC8C65237CDAD700D599D4 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		70CD88EE237AA4B900CC6493 /* RandomUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD88F1237AA4B900CC6493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708717B7237F88810092FA08 /* EntwineTest in Frameworks */,
+				708717B9237F88810092FA08 /* Entwine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +204,7 @@
 			children = (
 				70CD890B237AA4BC00CC6493 /* RandomUserTests.swift */,
 				70CD890D237AA4BC00CC6493 /* Info.plist */,
+				708717B3237F821E0092FA08 /* UserFetcherTests.swift */,
 			);
 			path = RandomUserTests;
 			sourceTree = "<group>";
@@ -255,6 +262,10 @@
 				70CD8909237AA4BC00CC6493 /* PBXTargetDependency */,
 			);
 			name = RandomUserTests;
+			packageProductDependencies = (
+				708717B6237F88810092FA08 /* EntwineTest */,
+				708717B8237F88810092FA08 /* Entwine */,
+			);
 			productName = RandomUserTests;
 			productReference = 70CD8907237AA4BC00CC6493 /* RandomUserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -309,6 +320,9 @@
 				Base,
 			);
 			mainGroup = 70CD88E5237AA4B900CC6493;
+			packageReferences = (
+				708717B5237F88810092FA08 /* XCRemoteSwiftPackageReference "Entwine" */,
+			);
 			productRefGroup = 70CD88EF237AA4B900CC6493 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708717B4237F821E0092FA08 /* UserFetcherTests.swift in Sources */,
 				70CD890C237AA4BC00CC6493 /* RandomUserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +747,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		708717B5237F88810092FA08 /* XCRemoteSwiftPackageReference "Entwine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tcldr/Entwine";
+			requirement = {
+				kind = exactVersion;
+				version = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		708717B6237F88810092FA08 /* EntwineTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 708717B5237F88810092FA08 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = EntwineTest;
+		};
+		708717B8237F88810092FA08 /* Entwine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 708717B5237F88810092FA08 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = Entwine;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */ = {

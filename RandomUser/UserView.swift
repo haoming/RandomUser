@@ -28,6 +28,11 @@ struct UserView: View {
     var body: some View {
         HStack{
             KFImage(self.avatarUrl)
+                .placeholder{
+                    Image(systemName: "person")
+                    .font(.largeTitle)
+                    .opacity(0.3)
+                }
                 .resizable()
                 .frame(width: 96, height: 96)
                 .cornerRadius(20)
