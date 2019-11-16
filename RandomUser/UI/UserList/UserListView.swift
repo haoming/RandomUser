@@ -36,8 +36,10 @@ struct UserListView: View {
             } else {
                 List {
                     ForEach(self.allUsers) { user in
-                        VStack(alignment: .leading) {
-                            UserView(user: user)
+                        NavigationLink(destination: UserDetailsView(user: user)) {
+                            VStack(alignment: .leading) {
+                                UserView(user: user)
+                            }
                         }
                     }
                 }

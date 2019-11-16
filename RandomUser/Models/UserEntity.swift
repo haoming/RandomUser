@@ -120,4 +120,18 @@ extension UserEntity {
             }
         }
     }
+    
+    var largeAvatarUrl: URL? {
+        get {
+            if let largePic = self.largePictureUrl, let largePicURL = URL(string: largePic) {
+                return largePicURL
+            } else if let mediumPic = self.mediumPictureUrl, let mediumPicURL = URL(string: mediumPic) {
+                return mediumPicURL
+            } else if let thumbnail = self.thumbnailUrl, let thumbnailURL = URL(string: thumbnail) {
+                return thumbnailURL
+            } else {
+                return nil
+            }
+        }
+    }
 }
