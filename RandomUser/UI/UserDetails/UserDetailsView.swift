@@ -42,9 +42,11 @@ struct UserDetailsView: View {
                     UserInfoItemView(label: "Last name", value: user.lastName)
                     Divider()
                     UserInfoItemView(label: "Email", value: user.email)
-                    MapView(coordinate: user.coordinate!)
-                                   .frame(height: 300)
-                                   .disabled(false)
+                    if user.coordinate != nil {
+                        MapView(coordinate: user.coordinate!)
+                                       .frame(height: 300)
+                                       .disabled(false)
+                    }
                 }.padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
     }

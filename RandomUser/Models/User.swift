@@ -33,6 +33,24 @@ extension User {
         }
     }
     
+    var genderEmoji: String? {
+        if gender == "Male" || gender == "male" {
+            return "♂️"
+        } else if gender == "Female" || gender == "female" {
+            return "♀️"
+        } else {
+            return nil
+        }
+    }
+    
+    var nationalityCountryCode: CountryCodeIso3166? {
+        if let nat = self.nationality, let natCode = CountryCodeIso3166(rawValue: nat.uppercased()) {
+            return natCode
+        } else {
+            return nil
+        }
+    }
+    
     var avatarUrl: URL? {
             get {
                 // the resolution of thumbnail is not good enough to use as avatars

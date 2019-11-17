@@ -90,9 +90,6 @@ class UserEntity : NSManagedObject, Identifiable {
 }
 
 extension UserEntity: User {
-//    var id: String {
-//        self.uuid.uuidString
-//    }
     
     var coordinate: CLLocationCoordinate2D? {
         if let lat = self.latitude, let lon = self.longitude {
