@@ -22,9 +22,21 @@
                                     <constraint firstAttribute="height" constant="90" id="gqh-Hk-2Bj"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A SwiftUI showcase app for randomuser.me" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dn2-0E-7Gu">
+                                <rect key="frame" x="110" y="513" width="194" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="YEQ-Fh-eDh"/>
+                                    <constraint firstAttribute="width" constant="194" id="zHv-qz-gOz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Dn2-0E-7Gu" firstAttribute="top" secondItem="b3I-Vu-V3K" secondAttribute="bottom" constant="20" id="5hw-jn-HQv"/>
+                            <constraint firstItem="Dn2-0E-7Gu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DEC-U8-fot"/>
                             <constraint firstItem="b3I-Vu-V3K" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Za1-IG-bYe"/>
                             <constraint firstItem="b3I-Vu-V3K" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="u1f-eq-CvZ"/>
                         </constraints>

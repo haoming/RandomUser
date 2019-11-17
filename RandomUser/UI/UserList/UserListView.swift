@@ -47,7 +47,7 @@ struct UserListView: View {
                     self.listView
                 }
             }
-            .navigationBarTitle("Random Users")
+            .navigationBarTitle("randomuser.me")
         }
     }
 
