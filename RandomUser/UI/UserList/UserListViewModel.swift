@@ -158,12 +158,15 @@ extension UserListViewModel {
     }
 
     private func filterUpdated(searchQuery: String, genderFilter: GenderFilter) {
-        if searchQuery.trimmingCharacters(in: .whitespacesAndNewlines) == "", genderFilter == .FemaleAndMale {
+        let nameQuery = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
+        if nameQuery == "", genderFilter == .FemaleAndMale {
             self.filterEnabled = false
         } else {
             self.filterEnabled = true
         }
         
-        print("filterUpdated - filterEnabled: \(filterEnabled), gender: \(self.currentGenderFilter), search: \(self.currentDebouncedSearchQuery)")
+        print("filterUpdated - filterEnabled: \(filterEnabled), gender: \(genderFilter), search: \(nameQuery)")
+        
+        self.fetchedUsers = self.coreDataFetcher.fetch(nameSearchQuery: nameQuery, genderFilter: genderFilter)
     }
 }

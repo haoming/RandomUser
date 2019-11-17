@@ -51,7 +51,7 @@ class UserEntity : NSManagedObject, Identifiable {
         entity.dateOfBirth = user.dateOfBirth
         entity.email = user.email
         entity.firstName = user.name?.first ?? ""
-        entity.gender = user.gender
+        entity.gender = user.gender?.lowercased()
         entity.index = index
         entity.largePictureUrl = user.picture?.large
         entity.lastName = user.name?.last ?? ""

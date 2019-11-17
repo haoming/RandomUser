@@ -21,12 +21,19 @@ struct UserListView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 if self.viewModel.fetchedUsers.isEmpty {
                     if self.viewModel.isLoading {
                         Text("Loading ...")
                     } else {
-                        Text("No user found.")
+                        VStack(alignment: .center) {
+                            Divider()
+                            UserFilterView(searchQuery: $viewModel.searchQuery, selectedGenderOptionIndex: $viewModel.selectedGenderOptionIndex)
+                            .disabled(self.viewModel.isLoading)
+                            Divider()
+                            Text("No user found.").padding(.init(top: 40, leading: 0, bottom: 0, trailing: 0))
+                            Spacer()
+                        }.padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }
                 } else {
                     self.listView
@@ -41,6 +48,7 @@ struct UserListView: View {
         List {
             UserFilterView(searchQuery: $viewModel.searchQuery, selectedGenderOptionIndex: $viewModel.selectedGenderOptionIndex)
                 .disabled(self.viewModel.isLoading)
+                .padding(.init(top: 2.5, leading: 1, bottom: 0, trailing: 1))
             Section {
                 ForEach(self.viewModel.fetchedUsers) { user in
                     VStack(alignment: .center) {
@@ -52,6 +60,11 @@ struct UserListView: View {
                             Divider()
                             Text("Loading ...")
                         }
+                        
+                        if self.viewModel.filterEnabled && self.viewModel.fetchedUsers.isLastItem(user) {
+                            Divider()
+                            Text("Filter applied to cached users only.")
+                        }
                     }.onAppear {
                         self.listItemAppears(user)
                     }
@@ -61,7 +74,7 @@ struct UserListView: View {
     }
     
     private func listItemAppears(_ item: UserEntity) {
-        if self.viewModel.fetchedUsers.isThresholdItem(offset: 5,
+        if !self.viewModel.filterEnabled, self.viewModel.fetchedUsers.isThresholdItem(offset: 5,
                                  item: item) {
             self.viewModel.fetchAndStore()
         }
