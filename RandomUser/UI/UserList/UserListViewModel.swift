@@ -13,7 +13,7 @@ import UIKit
 
 class UserListViewModel: ObservableObject {
     internal var objectWillChange = PassthroughSubject<Void, Never>()
-    
+        
     @Published var isLoading: Bool
     
     @Published var fetchedUsers: [UserEntity] = [] {
@@ -21,24 +21,39 @@ class UserListViewModel: ObservableObject {
           objectWillChange.send()
         }
     }
+    
+    @Published var filterEnabled: Bool = false
+    @Published var searchQuery: String = ""
+    @Published var selectedGenderOptionIndex: Int = GenderFilter.FemaleAndMale.rawValue {
+        didSet {
+            print("selectedGenderOptionIndex did set: \(selectedGenderOptionIndex)")
+            self.filterUpdated(searchQuery: self.currentDebouncedSearchQuery, genderFilter: self.currentGenderFilter)
+        }
+    }
+    
+    private var currentDebouncedSearchQuery: String = ""
 
     private weak var managedObjectContext: NSManagedObjectContext!
     private weak var fetcher: UserFetcher!
     private var coreDataFetcher: CoreDataUserFetcher!
     
     private var page: Int
-    private var countPerPage: Int
+    private let countPerPage: Int
     private var seed: String
 
     private var disposables = Set<AnyCancellable>()
     
     init() {
         self.isLoading = false
-        
         self.page = 1
         self.countPerPage = 30
         
         self.seed = UUID().uuidString
+        
+        _ = $searchQuery
+        .dropFirst(1)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+        .sink(receiveValue: searchQueryUpdated(search:))
     }
     
     func setUpAndRun(fetcher: UserFetcher, managedObjectContext: NSManagedObjectContext) {
@@ -48,7 +63,7 @@ class UserListViewModel: ObservableObject {
         self.fetchedUsers = self.coreDataFetcher.fetch()
         self.fetchAndStore()
     }
-
+    
     private func clearUserEntityData() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntity.coreDataEntityName)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -126,5 +141,29 @@ class UserListViewModel: ObservableObject {
                 self.isLoading = false
             }).store(in: &self.disposables)
         }
+    }
+}
+
+// MARK: - filters
+extension UserListViewModel {
+    private var currentGenderFilter: GenderFilter {
+        get {
+            return GenderFilter(rawValue: self.selectedGenderOptionIndex)!
+        }
+    }
+    
+    private func searchQueryUpdated(search: String) {
+        self.currentDebouncedSearchQuery = search
+        self.filterUpdated(searchQuery: self.currentDebouncedSearchQuery, genderFilter: self.currentGenderFilter)
+    }
+
+    private func filterUpdated(searchQuery: String, genderFilter: GenderFilter) {
+        if searchQuery.trimmingCharacters(in: .whitespacesAndNewlines) == "", genderFilter == .FemaleAndMale {
+            self.filterEnabled = false
+        } else {
+            self.filterEnabled = true
+        }
+        
+        print("filterUpdated - filterEnabled: \(filterEnabled), gender: \(self.currentGenderFilter), search: \(self.currentDebouncedSearchQuery)")
     }
 }

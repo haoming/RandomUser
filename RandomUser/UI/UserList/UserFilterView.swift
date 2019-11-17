@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+enum GenderFilter: Int {
+    case FemaleAndMale = 0
+    case Female = 1
+    case Male = 2
+}
+
 struct UserFilterView: View {
     
     private var genderOptions = ["♀️+ ♂️", "♀️Female", "♂️Male"]

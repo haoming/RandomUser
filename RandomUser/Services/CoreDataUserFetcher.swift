@@ -28,8 +28,14 @@ class CoreDataUserFetcher {
         self.managedObjectContext = managedObjectContext
     }
     
-    func fetch() -> [UserEntity] {
+    func fetch(nameSearchQuery: String = "", genderFilter: GenderFilter = .FemaleAndMale) -> [UserEntity] {
         do {
+            if nameSearchQuery == "", genderFilter == .FemaleAndMale {
+                self.fetchedResultsController.fetchRequest.predicate = nil
+            } else {
+                //TODO: set up predicates
+            }
+            
             try self.fetchedResultsController.performFetch()
             return self.fetchedResultsController.fetchedObjects!
         } catch {

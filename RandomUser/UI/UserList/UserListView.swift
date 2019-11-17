@@ -15,9 +15,6 @@ struct UserListView: View {
     
     @ObservedObject var viewModel: UserListViewModel
     
-    @State private var searchQuery: String = ""
-    @State private var selectedGenderOptionIndex: Int = 0
-    
     init(viewModel: UserListViewModel) {
         self.viewModel = viewModel
     }
@@ -42,7 +39,8 @@ struct UserListView: View {
     
     var listView: some View {
         List {
-            UserFilterView(searchQuery: $searchQuery, selectedGenderOptionIndex: $selectedGenderOptionIndex)
+            UserFilterView(searchQuery: $viewModel.searchQuery, selectedGenderOptionIndex: $viewModel.selectedGenderOptionIndex)
+                .disabled(self.viewModel.isLoading)
             Section {
                 ForEach(self.viewModel.fetchedUsers) { user in
                     VStack(alignment: .center) {
