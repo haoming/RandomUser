@@ -30,7 +30,14 @@ struct UserListView: View {
                             VStack(alignment: .center) {
                                 UserFilterView(searchQuery: $viewModel.searchQuery, selectedGenderOptionIndex: $viewModel.selectedGenderOptionIndex)
                                 .disabled(self.viewModel.isLoading)
-                                Text("No user found.").padding(.init(top: 40, leading: 0, bottom: 60, trailing: 0))
+                                
+                                if self.viewModel.filterEnabled {
+                                    Text("No user found.").padding(.init(top: 40, leading: 0, bottom: 30, trailing: 0))
+                                    Text("Note: the name and gender filters apply to users already loaded. Clear the filters and scroll down to load more users.").padding(.init(top: 0, leading: 16, bottom: 60, trailing: 16)).font(.footnote)
+                                } else {
+                                    Text("No user found. Please check your Internet connection.").padding(.init(top: 40, leading: 0, bottom: 60, trailing: 0))
+                                }
+                                                                
                                 Spacer()
                             }
                         }
@@ -63,7 +70,7 @@ struct UserListView: View {
                         
                         if self.viewModel.filterEnabled && self.viewModel.fetchedUsers.isLastItem(user) {
                             Divider()
-                            Text("Filter applied to cached users only.")
+                            Text("Filter applied to loaded users only.")
                         }
                     }.onAppear {
                         self.listItemAppears(user)
