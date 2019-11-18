@@ -48,6 +48,13 @@ struct UserListView: View {
                 }
             }
             .navigationBarTitle("randomuser.me")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.viewModel.refreshRandomUsers()
+                }) {
+                  Text("Refresh")
+                }.disabled(self.viewModel.isLoading)
+            )
         }
     }
 

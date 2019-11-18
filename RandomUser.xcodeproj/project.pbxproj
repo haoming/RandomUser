@@ -186,6 +186,7 @@
 				708717AE237F588D0092FA08 /* Utils */,
 				705EB9BA237CC120000A6FD9 /* Models */,
 				705EB9B6237CBFA9000A6FD9 /* Services */,
+				B2E9E2755211DA645229A83B /* UI */,
 				70CD88F1237AA4B900CC6493 /* AppDelegate.swift */,
 				70CD88F3237AA4B900CC6493 /* SceneDelegate.swift */,
 				70CD88FA237AA4BC00CC6493 /* Assets.xcassets */,
@@ -193,7 +194,6 @@
 				70CD8902237AA4BC00CC6493 /* Info.plist */,
 				70CD88F5237AA4B900CC6493 /* RandomUser.xcdatamodeld */,
 				70CD88FC237AA4BC00CC6493 /* Preview Content */,
-				B2E9E2755211DA645229A83B /* UI */,
 			);
 			path = RandomUser;
 			sourceTree = "<group>";

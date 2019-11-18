@@ -64,6 +64,15 @@ class UserListViewModel: ObservableObject {
         self.fetchAndStore()
     }
     
+    func refreshRandomUsers() {
+        guard !self.isLoading else {
+            return
+        }
+        self.seed = UUID().uuidString
+        self.page = 1
+        self.fetchAndStore()
+    }
+    
     private func clearUserEntityData() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntity.coreDataEntityName)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -108,7 +117,7 @@ class UserListViewModel: ObservableObject {
             self.isLoading = true
             
             let page = self.page
-            self.fetcher.getUsers(page: page, count: self.countPerPage, seed: self.seed)
+            self.fetcher.fetchUsers(page: page, count: self.countPerPage, seed: self.seed)
             .receive(on: DispatchQueue.main)
             .sink(
               receiveCompletion: { [weak self] value in

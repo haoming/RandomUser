@@ -22,11 +22,6 @@ public class UserFetcher {
     }
     
     static func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, RandomUserError> {
-        
-        if let str = String(data: data, encoding: .utf8) {
-            print(str)
-        }
-        
         return Just(data)
           .decode(type: T.self, decoder: JSONDecoder())
           .mapError { error in
@@ -37,7 +32,7 @@ public class UserFetcher {
           .eraseToAnyPublisher()
     }
     
-    func getUsers(page: Int, count: Int, seed: String, gender: String? = nil, nationality: String? = nil) -> AnyPublisher<RandomUserApiResponse, RandomUserError> {
+    func fetchUsers(page: Int, count: Int, seed: String, gender: String? = nil, nationality: String? = nil) -> AnyPublisher<RandomUserApiResponse, RandomUserError> {
         let url = getQueryURLComponents(page: page, count: count, seed: seed, gender: gender, nationality: nationality)
         return fetch(urlComponents: url)
     }
