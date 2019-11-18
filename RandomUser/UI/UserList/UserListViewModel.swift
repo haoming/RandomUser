@@ -68,6 +68,8 @@ class UserListViewModel: ObservableObject {
         guard !self.isLoading else {
             return
         }
+        self.searchQuery = ""
+        self.selectedGenderOptionIndex = GenderFilter.FemaleAndMale.rawValue
         self.seed = UUID().uuidString
         self.page = 1
         self.fetchAndStore()
