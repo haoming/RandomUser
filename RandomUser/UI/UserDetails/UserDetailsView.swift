@@ -41,7 +41,21 @@ struct UserDetailsView: View {
                     Divider()
                     UserInfoItemView(label: "Last name", value: user.lastName)
                     Divider()
-                    UserInfoItemView(label: "Email", value: user.email)
+                    // we cannot use if let dob = user.dateOfBirth here due to the restrictions of SwiftUI function builder
+                    if user.dateOfBirth != nil {
+                        UserInfoItemView(label: "Date of birth", value: DateUtils.formatDob(user.dateOfBirth!))
+                        Divider()
+                    }
+                    if user.nationalityCountryCode != nil {
+                        UserInfoItemView(label: "Nationality", value: "\(user.nationalityCountryCode!.flag) \(user.nationalityCountryCode!.country)")
+                        Divider()
+                    }
+                    if user.email != nil {
+                        UserInfoItemView(label: "Email", value: user.email)
+                        Divider()
+                    }
+                    
+                    UserInfoItemView(label: "Address", value: user.address)
                     if user.coordinate != nil {
                         MapView(coordinate: user.coordinate!)
                                        .frame(height: 300)

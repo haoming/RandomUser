@@ -10,10 +10,14 @@ import Foundation
 import CoreLocation
 
 protocol User {
-    //var id: String {get}
     var firstName: String {get}
     var lastName: String {get}
+    var title: String? {get}
+    
     var email: String? {get}
+    var phone: String? {get}
+    var cellPhone: String? {get}
+    var registeredTime: Date? {get}
     
     var gender: String? {get}
     var dateOfBirth: Date? {get}
@@ -23,6 +27,11 @@ protocol User {
     var mediumPictureUrl: String? {get}
     var largePictureUrl: String? {get}
     
+    var streetNumber: String? {get}
+    var streetName: String? {get}
+    var city: String? {get}
+    var state: String? {get}
+    var country: String? {get}
     var coordinate: CLLocationCoordinate2D? {get}
 }
 
@@ -79,6 +88,29 @@ extension User {
             } else {
                 return nil
             }
+        }
+    }
+    
+    var address: String? {
+        get {
+            var address = ""
+            if let streetNumber = self.streetNumber {
+                address = address + streetNumber + " "
+            }
+            if let streetName = self.streetName {
+                address = address + streetName + ", "
+            }
+            if let city = self.city {
+                address = address + city + ", "
+            }
+            if let state = self.state {
+                address = address + state + ", "
+            }
+            if let country = self.country {
+                address = address + country
+            }
+            
+            return address
         }
     }
 }

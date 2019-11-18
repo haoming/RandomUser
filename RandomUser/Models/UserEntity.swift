@@ -38,7 +38,6 @@ class UserEntity : NSManagedObject, Identifiable {
     @NSManaged var country: String?
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
-    @NSManaged var postcode: String?
 
     @NSManaged var seed: String?
     @NSManaged var index: Int64
